@@ -17,10 +17,11 @@ class SectionRepository implements SectionRepositoryInterface
     {
         Section::create([
             'name' => $request->input('name'),
+            'description' => $request->input('description'),
         ]);
 
         session()->flash('add');
-        return redirect()->route('Sections.index');
+        return redirect()->route('sections.index');
     }
 
     public function update($request)
@@ -28,9 +29,10 @@ class SectionRepository implements SectionRepositoryInterface
         $section = Section::findOrFail($request->id);
         $section->update([
             'name' => $request->input('name'),
+            'description' => $request->input('description'),
         ]);
         session()->flash('edit');
-        return redirect()->route('Sections.index');
+        return redirect()->route('sections.index');
     }
 
 
@@ -38,7 +40,7 @@ class SectionRepository implements SectionRepositoryInterface
     {
         Section::findOrFail($request->id)->delete();
         session()->flash('delete');
-        return redirect()->route('Sections.index');
+        return redirect()->route('sections.index');
     }
 
     public function show($id)

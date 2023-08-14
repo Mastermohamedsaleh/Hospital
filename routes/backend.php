@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\SectionController;
+use App\Http\Controllers\Dashboard\DoctorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,5 +28,11 @@ Route::get('Dashboard_admin', [DashboardController::class, 'index']);
  Route::resource('sections', SectionController::class);
 
  //############################# end sections route ######################################
+
+ //############################# doctors route ##########################################
+
+ Route::resource('doctors', DoctorController::class);
+
+ //############################# end doctors route ######################################
 
 

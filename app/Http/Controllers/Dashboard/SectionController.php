@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Repository\Sections\SectionRepositoryInterface;
 use Illuminate\Http\Request;
 
+use App\Http\Requests\StoreSectionRequest;
+
 class SectionController extends Controller
 {
 
@@ -28,13 +30,13 @@ class SectionController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(StoreSectionRequest $request)
     {
         return $this->Sections->store($request);
     }
 
 
-    public function update(Request $request)
+    public function update(StoreSectionRequest $request)
     {
         return $this->Sections->update($request);
     }

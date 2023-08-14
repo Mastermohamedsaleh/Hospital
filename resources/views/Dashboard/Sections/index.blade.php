@@ -13,7 +13,7 @@
 				<div class="breadcrumb-header justify-content-between">
 					<div class="my-auto">
 						<div class="d-flex">
-							<h4 class="content-title mb-0 my-auto">{{trans('Dashboard/main-sidebar_trans.sections')}}</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ {{trans('Dashboard/main-sidebar_trans.view_all')}}</span>
+							<h4 class="content-title mb-0 my-auto">Sections</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ Section</span>
 						</div>
 					</div>
 				</div>
@@ -29,10 +29,23 @@
                                 <div class="card-header pb-0">
                                     <div class="d-flex justify-content-between">
                                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add">
-                                          Sections
+                                          Add Section
                                         </button>
                                     </div>
                                 </div>
+
+
+                                @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
+
                                 <div class="card-body">
                                     <div class="table-responsive">
                                         <table class="table text-md-nowrap" id="example2">
@@ -40,6 +53,7 @@
                                             <tr>
                                                 <th class="wd-15p border-bottom-0">#</th>
                                                 <th class="wd-15p border-bottom-0">Name</th>
+                                                <th class="wd-15p border-bottom-0">Description</th>
                                              
                                                 <th class="wd-20p border-bottom-0">Created at</th>
                                                 <th class="wd-20p border-bottom-0">Process</th>
@@ -50,8 +64,8 @@
                                                <tr>
                                                    <td>{{$loop->iteration}}</td>
                                                    <td><a href="">{{$section->name}}</a> </td>
-                                                   <td></td>
-                                                   <td></td>
+                                                   <td>{{ \Str::limit($section->description, 10) }}</td>
+                                                   <td>{{$section->created_at}}</td>
                                                    <td>
                                                        <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"  data-toggle="modal" href="#edit{{$section->id}}"><i class="las la-pen"></i></a>
                                                        <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"  data-toggle="modal" href="#delete{{$section->id}}"><i class="las la-trash"></i></a>
@@ -69,7 +83,7 @@
                             </div><!-- bd -->
                         </div>
                         <!--/div-->
-
+      @include('Dashboard.Sections.add')
                     <!-- /row -->
 
 				</div>
