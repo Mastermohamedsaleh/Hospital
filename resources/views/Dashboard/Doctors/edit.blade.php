@@ -34,14 +34,14 @@
 @endsection
 @section('content')
 
-    @include('Dashboard.messages_alert')
+   
 
     <!-- row -->
     <div class="row">
         <div class="col-lg-12 col-md-12">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('Doctors.update', 'test') }}" method="post" autocomplete="off"
+                    <form action="{{ route('doctors.update', 'test') }}" method="post" autocomplete="off"
                           enctype="multipart/form-data">
                         {{ method_field('patch') }}
                         {{ csrf_field() }}
@@ -144,7 +144,7 @@
 
 
                             <button type="submit"
-                                    class="btn btn-main-primary pd-x-30 mg-r-5 mg-t-5">{{ trans('Doctors.submit') }}</button>
+                                    class="btn btn-main-primary pd-x-30 mg-r-5 mg-t-5">Submit</button>
                         </div>
                     </form>
                 </div>

@@ -17,7 +17,8 @@ class DoctorRepository implements DoctorRepositoryInterface
 
     public function index()
     {
-        $doctors = Doctor::with('doctorappointments')->get();
+        // $doctors = Doctor::with('doctorappointments')->get();
+        $doctors = Doctor::all();
         return view('Dashboard.Doctors.index',compact('doctors'));
     }
 
@@ -36,6 +37,7 @@ class DoctorRepository implements DoctorRepositoryInterface
         try {
 
             $doctors = new Doctor();
+            $doctors->name = $request->name;
             $doctors->email = $request->email;
             $doctors->password = Hash::make($request->password);
             $doctors->section_id = $request->section_id;
@@ -43,24 +45,25 @@ class DoctorRepository implements DoctorRepositoryInterface
             $doctors->status = 1;
            
 
-            // store trans
-            $doctors->name = $request->name;
             $doctors->save();
+            
+            // store trans
+          // insert pivot tABLE
+        //   $doctors->doctorappointments()->attach($request->appointments);
 
-            // insert pivot tABLE
-            $doctors->doctorappointments()->attach($request->appointments);
+              //Upload img
+              $this->verifyAndStoreImage($request,'photo','doctors','upload_image',$doctors->id,'App\Models\Doctor');
 
+              DB::commit();
+          
 
-            //Upload img
-            $this->verifyAndStoreImage($request,'photo','doctors','upload_image',$doctors->id,'App\Models\Doctor');
-
-            DB::commit();
+       
             session()->flash('add');
             return redirect()->route('doctors.create');
 
         }
         catch (\Exception $e) {
-            DB::rollback();
+            // DB::rollback();
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
 

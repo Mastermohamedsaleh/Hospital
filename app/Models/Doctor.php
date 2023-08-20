@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Doctor extends Model
 {
     use HasFactory;
-    public $fillable= ['email','email_verified_at','password','phone','name','section_id','status'];
+    public $fillable= ['email','password','phone','name','section_id','status'];
 
 
         /**
@@ -22,7 +22,7 @@ class Doctor extends Model
 
     public function section()
     {
-        return $this->belongsTo(Section::class);
+        return $this->belongsTo(Section::class , 'section_id');
     }
 
 
@@ -30,6 +30,6 @@ class Doctor extends Model
     
     public function doctorappointments()
     {
-        return $this->belongsToMany(Appointment::class);
+        return $this->belongsToMany(Appointment::class , 'appointment_id');
     }
 }

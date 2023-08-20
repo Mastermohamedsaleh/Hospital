@@ -1,29 +1,33 @@
 <!-- Modal -->
-<div class="modal fade" id="delete{{ $doctor->id }}" tabindex="-1" role="dialog"
+<div class="modal fade" id="update_status{{$doctor->id}}" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">
-                  Delete Doctor</h5>
+                Status Change</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="{{ route('doctors.destroy', 'test') }}" method="post">
-                {{ method_field('delete') }}
+            <form action="{{ route('update_status') }}" method="post" autocomplete="off">
                 {{ csrf_field() }}
                 <div class="modal-body">
-                    <h5>Do You Want Delete {{$doctor->name}}</h5>
-                    <input type="hidden" value="1" name="page_id">
-                    @if($doctor->image)
-                        <input type="hidden" name="filename" value="{{$doctor->image->filename}}">
-                    @endif
+
+                    <div class="form-group">
+                        <label for="status">Status</label>
+                        <select class="form-control" id="status" name="status" required>
+                            <option value="" selected disabled>Choose</option>
+                            <option value="1">Enabled</option>
+                            <option value="0">Not_Enabled</option>
+                        </select>
+                    </div>
+
                     <input type="hidden" name="id" value="{{ $doctor->id }}">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-danger">Submit</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </form>
         </div>
