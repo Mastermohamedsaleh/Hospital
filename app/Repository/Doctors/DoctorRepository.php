@@ -121,7 +121,7 @@ class DoctorRepository implements DoctorRepositoryInterface
        }
           Doctor::destroy($request->id);
           session()->flash('delete');
-          return redirect()->route('Doctors.index');
+          return redirect()->route('doctors.index');
       }
 
 
@@ -140,7 +140,7 @@ class DoctorRepository implements DoctorRepositoryInterface
 
           Doctor::destroy($delete_select_id);
           session()->flash('delete');
-          return redirect()->route('Doctors.index');
+          return redirect()->route('doctors.index');
       }
 
     }

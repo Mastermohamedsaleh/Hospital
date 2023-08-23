@@ -12,7 +12,7 @@
     <div class="breadcrumb-header justify-content-between">
         <div class="my-auto">
             <div class="d-flex">
-                <h4 class="content-title mb-0 my-auto">{{trans('main-sidebar_trans.doctors')}}</h4>
+                <h4 class="content-title mb-0 my-auto">Doctors</h4>
                 <span class="text-muted mt-1 tx-13 mr-2 mb-0">/
                     {{trans('main-sidebar_trans.view_all')}}</span>
             </div>
@@ -30,9 +30,9 @@
                 <div class="card-header pb-0">
 
                     <a href="{{route('doctors.create')}}" class="btn btn-primary" role="button"
-                       aria-pressed="true">add_doctor</a>
+                       aria-pressed="true">Add Doctor</a>
                     <button type="button" class="btn btn-danger"
-                            id="btn_delete_all">doctors.delete</button>
+                            id="btn_delete_all">Delete Doctor</button>
 
                 </div>
                 <div class="card-body">
@@ -101,6 +101,7 @@
                                 </tr>
                                 @include('Dashboard.Doctors.delete')
                                 @include('Dashboard.Doctors.update_password')
+                                @include('Dashboard.Doctors.delete_select')
                               
                                 @include('Dashboard.Doctors.update_status')
                             @endforeach
