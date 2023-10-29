@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\SectionController;
 use App\Http\Controllers\Dashboard\DoctorController;
+use App\Http\Controllers\Dashboard\SingleServiceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,4 +39,6 @@ Route::get('Dashboard_admin', [DashboardController::class, 'index']);
 
  //############################# end doctors route ######################################
 
+
+ Route::resource('Service', SingleServiceController::class);
 

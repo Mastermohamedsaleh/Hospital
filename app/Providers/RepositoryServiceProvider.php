@@ -8,6 +8,8 @@ use App\Repository\Sections\SectionRepository;
 use App\Repository\Sections\SectionRepositoryInterface;
 use App\Repository\Doctors\DoctorRepository;
 use App\Repository\Doctors\DoctorRepositoryInterface;
+use App\Repository\Services\SingleServiceRepository;
+use App\Repository\Services\SingleServiceRepositoryInterface;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -20,6 +22,7 @@ class RepositoryServiceProvider extends ServiceProvider
     {
          $this->app->bind(SectionRepositoryInterface::class , SectionRepository::class);
          $this->app->bind(DoctorRepositoryInterface::class , DoctorRepository::class);
+         $this->app->bind(SingleServiceRepositoryInterface::class , SingleServiceRepository::class);
     }
 
     /**

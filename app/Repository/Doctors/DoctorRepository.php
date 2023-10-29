@@ -77,14 +77,12 @@ class DoctorRepository implements DoctorRepositoryInterface
         try {
 
             $doctor = Doctor::findorfail($request->id);
-
+            $doctor->name = $request->name;
             $doctor->email = $request->email;
             $doctor->section_id = $request->section_id;
             $doctor->phone = $request->phone;
             $doctor->save();
-            // store trans
-            $doctor->name = $request->name;
-            $doctor->save();
+        
 
             // update pivot tABLE
             $doctor->doctorappointments()->sync($request->appointments);
