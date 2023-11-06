@@ -5,6 +5,9 @@ use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\SectionController;
 use App\Http\Controllers\Dashboard\DoctorController;
 use App\Http\Controllers\Dashboard\SingleServiceController;
+use App\Http\Controllers\Dashboard\InsuranceController;
+use App\Http\Controllers\Dashboard\AmbulanceController;
+use App\Http\Controllers\Dashboard\PatientController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +20,14 @@ use App\Http\Controllers\Dashboard\SingleServiceController;
 |
 */
 
+Route::get('/dashboard/user', function () {
+    return view('Dashboard.User.dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+
+Route::get('/dashboard/admin', function () {
+    return view('Dashboard.Admin.dashboard');
+})->middleware(['auth:admin'])->name('dashboard.admin');
 
 
 
@@ -42,3 +53,22 @@ Route::get('Dashboard_admin', [DashboardController::class, 'index']);
 
  Route::resource('Service', SingleServiceController::class);
 
+
+
+// Livewire
+Route::view('Add_GroupServices','livewire.GroupServices.include_create')->name('Add_GroupServices');
+
+
+Route::resource('insurance', InsuranceController::class);
+
+
+Route::resource('Ambulance', AmbulanceController::class);
+
+
+Route::resource('Patients', PatientController::class);
+
+
+Route::view('single_invoices','livewire.single_invoices.index')->name('single_invoices');
+
+
+require __DIR__.'/auth.php';

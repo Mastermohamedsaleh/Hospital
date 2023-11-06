@@ -263,7 +263,25 @@
 									<a class="dropdown-item" href=""><i class="bx bxs-inbox"></i>Inbox</a>
 									<a class="dropdown-item" href=""><i class="bx bx-envelope"></i>Messages</a>
 									<a class="dropdown-item" href=""><i class="bx bx-slider-alt"></i> Account Settings</a>
-									<a class="dropdown-item" href="{{ url('/' . $page='page-signin') }}"><i class="bx bx-log-out"></i> Sign Out</a>
+                                  
+
+ 
+                                   <!-- logout -->
+
+									@if(auth('web')->check())
+									<form method="POST" action="{{ route('logout.user') }}">
+									@elseif(auth('admin')->check())
+									<form method="POST" action="{{ route('logout.admin') }}">
+									@endif
+									@csrf
+                                        <a class="dropdown-item" href="#"
+                                        onclick="event.preventDefault();
+                                        this.closest('form').submit();"><i class="bx bx-log-out"></i>Sign Out</a>
+                                         </form>
+
+
+                            <!-- End Logout -->
+
 								</div>
 							</div>
 							<div class="dropdown main-header-message right-toggle">

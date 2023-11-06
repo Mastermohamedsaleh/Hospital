@@ -1,4 +1,5 @@
 <!-- Title -->
+@livewireStyles
 <title> Valex -  Premium dashboard ui bootstrap rwd admin html5 template </title>
 <!-- Favicon -->
 <link rel="icon" href="{{URL::asset('Dashboard/img/brand/favicon.png')}}" type="image/x-icon"/>
