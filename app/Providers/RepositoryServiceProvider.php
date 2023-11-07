@@ -17,6 +17,8 @@ use App\Repository\Ambulances\AmbulanceRepository;
 use App\Repository\Ambulances\AmbulanceRepositoryInterface;
 use App\Repository\Patients\PatientRepository;
 use App\Repository\Patients\PatientRepositoryInterface;
+use App\Repository\Receipts\ReceiptRepository;
+use App\Repository\Receipts\ReceiptRepositoryInterface;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -33,6 +35,7 @@ class RepositoryServiceProvider extends ServiceProvider
          $this->app->bind(insuranceRepositoryInterface::class , insuranceRepository::class);
          $this->app->bind(AmbulanceRepositoryInterface::class , AmbulanceRepository::class);
          $this->app->bind(PatientRepositoryInterface::class , PatientRepository::class);
+         $this->app->bind(ReceiptRepositoryInterface::class , ReceiptRepository::class);
     }
 
     /**

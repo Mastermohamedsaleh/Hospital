@@ -12,7 +12,7 @@
         <script>
             window.onload = function() {
                 notif({
-                    msg: "{{ trans('Dashboard/messages.add') }}",
+                    msg: "Add Success",
                     type: "success"
                 });
             }
@@ -24,7 +24,7 @@
         <script>
             window.onload = function() {
                 notif({
-                    msg: "{{ trans('Dashboard/messages.edit') }}",
+                    msg: "Edit Success",
                     type: "success"
                 });
             }
@@ -36,7 +36,7 @@
         <script>
             window.onload = function() {
                 notif({
-                    msg: "{{ trans('Dashboard/messages.delete') }}",
+                    msg: "Delete Success",
                     type: "success"
                 });
             }

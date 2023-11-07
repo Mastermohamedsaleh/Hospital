@@ -8,6 +8,8 @@ use App\Http\Controllers\Dashboard\SingleServiceController;
 use App\Http\Controllers\Dashboard\InsuranceController;
 use App\Http\Controllers\Dashboard\AmbulanceController;
 use App\Http\Controllers\Dashboard\PatientController;
+use App\Http\Controllers\Dashboard\ReceiptAccountController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -68,7 +70,24 @@ Route::resource('Ambulance', AmbulanceController::class);
 Route::resource('Patients', PatientController::class);
 
 
+
+
+
+//############################# single_invoices route ##########################################
+
 Route::view('single_invoices','livewire.single_invoices.index')->name('single_invoices');
+
+Route::view('Print_single_invoices','livewire.single_invoices.print')->name('Print_single_invoices');
+
+//############################# end single_invoices route ######################################
+
+
+//############################# Receipt route ##########################################
+
+Route::resource('Receipt', ReceiptAccountController::class);
+
+//############################# end Receipt route ######################################
+
 
 
 require __DIR__.'/auth.php';
