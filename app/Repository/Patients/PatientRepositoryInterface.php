@@ -10,6 +10,8 @@ interface PatientRepositoryInterface
     public function index();
     // Create New Patients
     public function create();
+    // Detalis
+    public function Show($id);
     // Store new Patients
     public function store($request);
     // edit Patients

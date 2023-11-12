@@ -33,6 +33,10 @@ Route::get('/dashboard/admin', function () {
 
 
 
+//################################ dashboard admin ########################################
+
+
+
 
 Route::get('Dashboard_admin', [DashboardController::class, 'index']);
 
