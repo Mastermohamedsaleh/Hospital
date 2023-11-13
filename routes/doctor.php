@@ -1,7 +1,9 @@
 <?php
 
 
-use App\Http\Controllers\Dashboard_Doctor\DiagnosticController;
+
+
+use App\Http\Controllers\Dashboard_Doctor\{PatientDetailsController,RayController,DiagnosticController,LaboratorieController};
 use App\Http\Controllers\doctor\InvoiceController;
 use Illuminate\Support\Facades\Route;
 
@@ -44,6 +46,15 @@ use Illuminate\Support\Facades\Route;
 
 
 
+            //############################# completed_invoices route ##########################################
+            Route::get('completed_invoices', [InvoiceController::class,'completedInvoices'])->name('completedInvoices');
+            //############################# end invoices route ################################################
+
+            //############################# review_invoices route ##########################################
+            Route::get('review_invoices', [InvoiceController::class,'reviewInvoices'])->name('reviewInvoices');
+            //############################# end invoices route #############################################
+
+
             //############################# review_invoices route ##########################################
             Route::post('add_review', [DiagnosticController::class,'addReview'])->name('add_review');
             //############################# end invoices route #############################################
@@ -54,6 +65,32 @@ use Illuminate\Support\Facades\Route;
             Route::resource('Diagnostics', DiagnosticController::class);
 
             //############################# end Diagnostics route ######################################
+
+
+            
+            //############################# rays route ##########################################
+
+            Route::resource('rays', RayController::class);
+
+            //############################# end rays route ######################################
+
+
+
+                   //############################# rays route ##########################################
+
+                   Route::get('patient_details/{id}', [PatientDetailsController::class,'index'])->name('patient_details');
+
+                   //############################# end rays route ######################################
+
+
+
+                   
+
+            //############################# Laboratories route ##########################################
+
+            Route::resource('Laboratories', LaboratorieController::class);
+
+            //############################# end Laboratories route ######################################
 
 
         });

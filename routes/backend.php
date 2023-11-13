@@ -9,6 +9,7 @@ use App\Http\Controllers\Dashboard\InsuranceController;
 use App\Http\Controllers\Dashboard\AmbulanceController;
 use App\Http\Controllers\Dashboard\PatientController;
 use App\Http\Controllers\Dashboard\ReceiptAccountController;
+use App\Http\Controllers\Dashboard\RayEmployeeController;
 
 
 /*
@@ -91,6 +92,17 @@ Route::view('Print_single_invoices','livewire.single_invoices.print')->name('Pri
 Route::resource('Receipt', ReceiptAccountController::class);
 
 //############################# end Receipt route ######################################
+
+
+
+
+
+
+       //############################# RayEmployee route ##########################################
+
+       Route::resource('ray_employee', RayEmployeeController::class);
+
+       //############################# end RayEmployee route ######################################
 
 
 

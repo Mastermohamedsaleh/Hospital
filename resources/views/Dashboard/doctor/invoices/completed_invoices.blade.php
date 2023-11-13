@@ -1,6 +1,6 @@
 @extends('Dashboard.layouts.master-doctor')
 @section('title')
-   الكشوفات
+   الكشوفات المكتملة
 @stop
 @section('css')
     <!-- Internal Data table css -->
@@ -21,7 +21,7 @@
 				<div class="breadcrumb-header justify-content-between">
 					<div class="my-auto">
 						<div class="d-flex">
-							<h4 class="content-title mb-0 my-auto">الكشوفات</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ الفواتير</span>
+							<h4 class="content-title mb-0 my-auto">الكشوفات المكتملة</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ الفواتير</span>
 						</div>
 					</div>
 				</div>
@@ -49,8 +49,6 @@
                                                 <th>قيمة الضريبة</th>
                                                 <th>الاجمالي مع الضريبة</th>
                                                 <th>حالة الفاتورة</th>
-                                           
-                                                <th>العمليات</th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -59,14 +57,13 @@
                                                    <td>{{ $loop->iteration}}</td>
                                                    <td>{{ $invoice->invoice_date }}</td>
                                                    <td>{{ $invoice->Service->name ?? $invoice->Group->name }}</td>
-                                                   <td><a href="{{route('patient_details',$invoice->patient_id)}}">{{ $invoice->Patient->name }}</a</td>
+                                                   <td><a href="{{route('Diagnostics.show',$invoice->patient_id)}}">{{ $invoice->Patient->name }}</a></td>
                                                    <td>{{ number_format($invoice->price, 2) }}</td>
                                                    <td>{{ number_format($invoice->discount_value, 2) }}</td>
                                                    <td>{{ $invoice->tax_rate }}%</td>
                                                    <td>{{ number_format($invoice->tax_value, 2) }}</td>
                                                    <td>{{ number_format($invoice->total_with_tax, 2) }}</td>
-                                            
-                                                      <td>
+                                                   <td>
                                                       @if($invoice->invoice_status == 1)
                                                            <span class="badge badge-danger">تحت الاجراء</span>
                                                       @elseif($invoice->invoice_status == 2)
@@ -75,35 +72,8 @@
                                                           <span class="badge badge-success">مكتملة</span>
                                                        @endif
                                                    </td>
-
-
-                                                 
-                                                   <td>
-
-                                           
-
-
-
-
-                                                       <div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Dropdown button
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-  <a class="dropdown-item" href="#" data-toggle="modal" data-target="#add_diagnosis{{$invoice->id}}"><i class="text-primary fa fa-stethoscope"></i>&nbsp;&nbsp;اضافة تشخيص </a>
-  <a class="dropdown-item" href="#" data-toggle="modal" data-target="#add_review{{$invoice->id}}"><i class="text-warning far fa-file-alt"></i>&nbsp;&nbsp;اضافة مراجعة </a>
-  <a class="dropdown-item" href="#" data-toggle="modal" data-target="#xray_conversion{{$invoice->id}}"><i class="text-primary fas fa-x-ray"></i>&nbsp;&nbsp;تحويل الي الاشعة </a>
-                                             </div>
-                                               </div>
-<a class="dropdown-item" href="#" data-toggle="modal" data-target="#laboratorie_conversion{{$invoice->id}}"><i class="text-warning fas fa-syringe"></i>&nbsp;&nbsp;تحويل الي المختبر </a>
-
-
-                                                   </td> 
                                                </tr>
                                                @include('Dashboard.Doctor.invoices.add_diagnosis')
-                                               @include('Dashboard.Doctor.invoices.add_review')
-                                               @include('Dashboard.Doctor.invoices.xray_conversion')
-                                               @include('Dashboard.Doctor.invoices.Laboratorie_conversion')
                                            @endforeach
                                             </tbody>
                                         </table>
