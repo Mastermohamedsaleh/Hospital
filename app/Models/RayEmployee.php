@@ -4,8 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class RayEmployee extends Model
+class RayEmployee extends Authenticatable
 {
     use HasFactory;
+    protected $guarded=[];
+
+
+    public function employee()
+    {
+        return $this->belongsTo(RayEmployee::class,'employee_id')
+            ->withDefault(['name'=>'noEmployee']);
+    } //withDefault if don't found name use noEmployee
+
+
 }

@@ -9,6 +9,7 @@ use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\Auth\DoctorController;
+use App\Http\Controllers\Auth\RayEmployeeController;
 use App\Http\Controllers\Dashboard\AdminController;
 use Illuminate\Support\Facades\Route;
 
@@ -43,6 +44,16 @@ Route::middleware('guest')->group(function () {
     Route::post('/logout/doctor', [DoctorController::class, 'destroy'])->middleware('auth:doctor')->name('logout.doctor');
 //##################################################################################################
 
+
+
+
+//################################## Route RayEmployee ##############################################
+
+Route::post('/login/ray_employee', [RayEmployeeController::class, 'store'])->middleware('guest')->name('login.ray_employee');
+
+Route::post('/logout/ray_employee', [RayEmployeeController::class, 'destroy'])->middleware('auth:ray_employee')->name('logout.ray_employee');
+
+//#############################################################################################
 
 
     Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])

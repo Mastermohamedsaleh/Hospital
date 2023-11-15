@@ -5,6 +5,7 @@ namespace App\Http\Controllers\doctor;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Single_invoice;
+use App\Models\Ray;
 use Illuminate\Support\Facades\Auth;
 
 class InvoiceController extends Controller
@@ -48,7 +49,8 @@ class InvoiceController extends Controller
  
     public function show($id)
     {
-        //
+        $rays = Ray::findorFail($id);
+        return view('Dashboard.Doctor.invoices.view_rays', compact('rays'));
     }
 
 
