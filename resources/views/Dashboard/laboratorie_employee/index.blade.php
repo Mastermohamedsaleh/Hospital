@@ -13,7 +13,7 @@
 				<div class="breadcrumb-header justify-content-between">
 					<div class="my-auto">
 						<div class="d-flex">
-							<h4 class="content-title mb-0 my-auto">الاشعة</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ قائمة الموظفين</span>
+							<h4 class="content-title mb-0 my-auto">المتخبر</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ قائمة الموظفين</span>
 						</div>
 					</div>
 				</div>
@@ -46,20 +46,20 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                           @foreach($ray_employees as $ray_employee)
+                                           @foreach($laboratorie_employees as $laboratorie_employee)
                                                <tr>
                                                    <td>{{$loop->iteration}}</td>
-                                                   <td>{{$ray_employee->name}}</td>
-                                                   <td>{{ $ray_employee->email }}</td>
-                                                   <td>{{ $ray_employee->created_at }}</td>
+                                                   <td>{{$laboratorie_employee->name}}</td>
+                                                   <td>{{ $laboratorie_employee->email }}</td>
+                                                   <td>{{ $laboratorie_employee->created_at->diffForHumans() }}</td>
                                                    <td>
-                                                       <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"  data-toggle="modal" href="#edit{{$ray_employee->id}}"><i class="las la-pen"></i></a>
-                                                       <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"  data-toggle="modal" href="#delete{{$ray_employee->id}}"><i class="las la-trash"></i></a>
+                                                       <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"  data-toggle="modal" href="#edit{{$laboratorie_employee->id}}"><i class="las la-pen"></i></a>
+                                                       <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"  data-toggle="modal" href="#delete{{$laboratorie_employee->id}}"><i class="las la-trash"></i></a>
                                                    </td>
                                                </tr>
 
-                                               @include('Dashboard.ray_employee.edit')
-                                               @include('Dashboard.ray_employee.delete')
+                                               @include('Dashboard.laboratorie_employee.edit')
+                                               @include('Dashboard.laboratorie_employee.delete')
 
                                            @endforeach
                                             </tbody>
@@ -70,7 +70,7 @@
                         </div>
                         <!--/div-->
 
-                    @include('Dashboard.ray_employee.add')
+                    @include('Dashboard.laboratorie_employee.add')
                     <!-- /row -->
 
 				</div>
@@ -87,4 +87,4 @@
     <script src="{{URL::asset('dashboard/plugins/notify/js/notifIt.js')}}"></script>
     <script src="{{URL::asset('/plugins/notify/js/notifit-custom.js')}}"></script>
 
-@endsection
+@endsections

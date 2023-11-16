@@ -1,4 +1,4 @@
-@extends('Dashboard.layouts.master-ray_employee')
+@extends('Dashboard.layouts.master-doctor')
 @section('title')
    الكشوفات
 @stop

@@ -10,7 +10,7 @@ use App\Http\Controllers\Dashboard\AmbulanceController;
 use App\Http\Controllers\Dashboard\PatientController;
 use App\Http\Controllers\Dashboard\ReceiptAccountController;
 use App\Http\Controllers\Dashboard\RayEmployeeController;
-
+use App\Http\Controllers\Dashboard\LaboratorieEmployeeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -94,7 +94,11 @@ Route::resource('Receipt', ReceiptAccountController::class);
 //############################# end Receipt route ######################################
 
 
+    //############################# laboratorie_employee route ##########################################
 
+    Route::resource('laboratorie_employee', LaboratorieEmployeeController::class);
+
+    //############################# end laboratorie_employee route ######################################
 
 
 

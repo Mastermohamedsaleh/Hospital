@@ -416,6 +416,4 @@
 <!--Internal  index js -->
 <script src="{{URL::asset('Dashboard/js/index.js')}}"></script>
 <script src="{{URL::asset('Dashboard/js/jquery.vmap.sampledata.js')}}"></script>
-
-
 @endsection

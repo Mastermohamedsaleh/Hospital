@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\Auth\LoginAdminRequest;
+use App\Providers\RouteServiceProvider;
 
 class AdminController extends Controller
 {
@@ -23,11 +24,12 @@ class AdminController extends Controller
     
     public function store(LoginAdminRequest $request)
     {
-        $request->authenticate();
+        if($request->authenticate()){
+            $request->session()->regenerate();
+            return redirect()->intended(RouteServiceProvider::ADMIN);
+        }
 
-        $request->session()->regenerate();
-
-        return redirect()->intended(RouteServiceProvider::ADMIN);
+        return redirect()->back()->withErrors(['name' => (trans('Dashboard/auth.failed'))]);
     }
 
     public function show($id)

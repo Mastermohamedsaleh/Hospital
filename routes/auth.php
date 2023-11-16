@@ -10,6 +10,8 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\Auth\DoctorController;
 use App\Http\Controllers\Auth\RayEmployeeController;
+use App\Http\Controllers\Auth\LaboratorieEmployeeController;
+use App\Http\Controllers\Auth\PatientController;
 use App\Http\Controllers\Dashboard\AdminController;
 use Illuminate\Support\Facades\Route;
 
@@ -54,6 +56,32 @@ Route::post('/login/ray_employee', [RayEmployeeController::class, 'store'])->mid
 Route::post('/logout/ray_employee', [RayEmployeeController::class, 'destroy'])->middleware('auth:ray_employee')->name('logout.ray_employee');
 
 //#############################################################################################
+
+
+
+
+
+//################################## Route laboratorie_employee ##############################################
+
+Route::post('/login/laboratorie_employee', [LaboratorieEmployeeController::class, 'store'])->middleware('guest')->name('login.laboratorie_employee');
+
+Route::post('/logout/laboratorie_employee', [LaboratorieEmployeeController::class, 'destroy'])->middleware('auth:laboratorie_employee')->name('logout.laboratorie_employee');
+
+//#############################################################################################
+
+
+
+
+//################################## Route patient ##############################################
+
+Route::post('/login/patient', [PatientController::class, 'store'])->middleware('guest')->name('login.patient');
+
+Route::post('/logout/patient', [PatientController::class, 'destroy'])->middleware('auth:patient')->name('logout.patient');
+
+//#############################################################################################
+
+
+
 
 
     Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
